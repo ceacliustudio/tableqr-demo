@@ -1,0 +1,35 @@
+/* TableQR admin */
+.tableqr .tq-inline{display:inline}
+.tableqr .tq-credit{margin-top:40px;color:#646970;font-size:12px}
+@media print{.tableqr .tq-credit{display:none}}
+.tableqr .tq-tables input[type=text]{width:180px}
+.tableqr .tq-actions-cell{white-space:nowrap}
+.tableqr .tq-cats-list{display:flex;flex-wrap:wrap;gap:6px 18px;max-width:760px}
+.tq-board{display:grid;grid-template-columns:minmax(220px,1fr) 3fr;gap:20px;margin-top:10px}
+@media (max-width:900px){.tq-board{grid-template-columns:1fr}}
+.tq-call{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border-left:6px solid #2271b1;padding:10px 12px;margin-bottom:8px;font-size:15px}
+.tq-call-bill{border-left-color:#dba617}
+.tq-call button{margin-left:auto}
+.tq-orders{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.tq-order{background:#fff;border:1px solid #dcdcde;border-top:6px solid #00a32a;border-radius:6px;padding:12px}
+.tq-order.tq-late{border-top-color:#d63638}
+.tq-order-head{display:flex;justify-content:space-between;align-items:baseline;font-size:16px}
+.tq-order-head b{font-size:20px}
+.tq-order ul{margin:8px 0;padding-left:0;list-style:none;font-size:15px}
+.tq-order li{padding:4px 0;border-bottom:1px dashed #eee}
+.tq-order em{color:#b32d2e;font-style:normal}
+.tq-onote{background:#fcf9e8;padding:6px 8px;margin:6px 0}
+.tq-order-foot{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.tq-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:12px}
+.tq-card{background:#fff;border:2px solid var(--tq-accent,#c41d2a);border-radius:14px;padding:16px;text-align:center;break-inside:avoid}
+.tq-card-title{font-weight:700;font-size:16px;color:var(--tq-accent,#c41d2a)}
+.tq-qr{width:180px;height:180px;margin:10px auto}
+.tq-qr svg{width:100%;height:100%;display:block}
+.tq-card-table{font-size:26px;font-weight:800}
+.tq-card-hint{color:#50575e}
+@media print{
+  #adminmenumain,#wpadminbar,#wpfooter,.nav-tab-wrapper,.notice,.tq-noprint,.tableqr h1{display:none!important}
+  #wpcontent,#wpbody-content{margin:0!important;padding:0!important}
+  .tq-cards{grid-template-columns:repeat(3,1fr);gap:8mm}
+  .tq-card{border-width:1px}
+}

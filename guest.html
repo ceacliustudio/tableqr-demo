@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TableQR – guest menu (demo)</title>
+<link rel="stylesheet" href="menu.css?v=1794119936">
+<style>:root{--tq-accent:#b3261e} @media (prefers-color-scheme:dark){:root{--tq-bg:#f6f5f3;--tq-card:#fff;--tq-text:#1d1d1f;--tq-muted:#6b6b70;--tq-line:#e6e3df}}</style>
+</head>
+<body>
+<header class="tq-top"><div class="tq-brand">Bella Napoli</div><div class="tq-table" id="tq-table">Table 3</div></header>
+<main id="tq-app" class="tq-app"><div class="tq-loading"></div></main>
+<script>
+
+window.TableQRConfig = {api: "/wp-json/tableqr/v1", token: "demo-token-123456789", title: "Bella Napoli", color: "#b3261e", locale: "en",
+  i18n: {all: "All", add: "Add", cart: "Your order", empty: "Nothing added yet. Tap a product to add it.", send: "Send order", sending: "Sending…",
+    total: "Total", note: "Note for the kitchen (optional)", name: "Your name", choose: "Choose", out: "Sold out", sent: "Order sent!",
+    number: "Order number", status: "Status", pay: "You pay at the table, as usual.", again: "Order something else", waiter: "Call the waiter",
+    bill: "Bring the bill", called: "The staff has been notified.", invalid: "This QR code is no longer valid.", error: "Something went wrong.",
+    search: "Search the menu", remove: "Remove", close: "Close", my_orders: "My orders", confirm: "Send the order to the kitchen?", table: "Table",
+    item_note: "Note for this product (e.g. no onion)"}};
+</script>
+<script src="i18n.js?v=1794119936"></script>
+<script src="mock.js?v=1794119936"></script>
+<script src="demo-api.js?v=1794119936"></script>
+<script src="menu.js?v=1794119936"></script>
+<script>
+// put the page in the state asked by ?state= (for the screenshots)
+(function () {
+  var state = (location.search.match(/state=(\w+)/) || [])[1] || "menu";
+  var click = function (sel) { var el = document.querySelector(sel); if (el) el.click(); return el; };
+  setTimeout(function () {
+    if (state === "menu") return;
+    if (state === "sheet") { click('[data-p="21"]'); setTimeout(function () { click('[data-o="23"]'); var n = document.getElementById("tq-inote"); if (n) n.value = "extra basil"; }, 50); return; }
+    // fill the order: 2 Margherita large, 2 red wine, 1 tiramisu
+    click('[data-p="21"]'); click('[data-o="23"]'); click('[data-q="1"]'); click("#tq-addit");
+    click('[data-p="37"]'); click('[data-q="1"]'); click("#tq-addit");
+    click('[data-p="45"]'); click("#tq-addit");
+    if (state === "bar") return;
+    click("#tq-open-cart");
+    if (state === "cart") { var t = document.getElementById("tq-note"); if (t) t.value = "Birthday – a candle on the tiramisu, please"; return; }
+    if (state === "sent") click("#tq-send");
+  }, 300);
+})();
+</script>
+</body>
+</html>
